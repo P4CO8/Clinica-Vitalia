@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Pacientes | Clínica Vitalia — Sistema de gestión clínica{% endblock %}
+{% block content %}
+  <div class="page-heading">
+    <div><p class="eyebrow">Directorio</p><h1>Pacientes</h1><p class="section-description">Consulta las personas registradas en la clínica.</p></div>
+    <a class="button button-primary" href="{{ url_for('patients.new_patient') }}">Registrar paciente <span aria-hidden="true">→</span></a>
+  </div>
+  <form class="filter-form" method="get" action="{{ url_for('patients.directory') }}">
+    <label for="estado">Estado</label>
+    <select id="estado" name="estado" onchange="this.form.submit()">
+      <option value="todos" {% if selected_filter == "todos" %}selected{% endif %}>Todos</option>
+      <option value="activos" {% if selected_filter == "activos" %}selected{% endif %}>Activos</option>
+      <option value="inactivos" {% if selected_filter == "inactivos" %}selected{% endif %}>Inactivos</option>
+    </select>
+  </form>
+  <section class="panel patients-panel appointment-live-panel" aria-labelledby="list-title">
+    <div class="section-heading"><h2 id="list-title">Pacientes registrados</h2><span class="count-badge">{{ patients|length }}</span></div>
+    {% if patients %}
+      <div class="table-wrap"><table>
+        <thead><tr><th>Paciente</th><th>Documento</th><th>Fecha de nacimiento</th><th>Contacto</th><th>Sangre</th><th>Código interno</th><th>Estado</th><th>Atención / cita</th><th>Acción</th></tr></thead>
+        <tbody>{% for patient in patients %}
+        {% set appointment = attention_by_patient.get(patient.internal_id) %}<tr>
+          <td class="patient-name">{{ patient.name or "Pendiente" }}
+            {% if appointment %}<small class="doctor-caption">{{ attention_doctors[appointment.doctor_id].name if appointment.doctor_id in attention_doctors else "Médico no disponible" }}</small><small class="attention-caption">Médico de {{ "la cita próxima" if appointment.status == "PENDIENTE" else "esta cita" }}</small>{% else %}<small class="doctor-caption">Sin médico asignado</small>{% endif %}
+          </td>
+          <td>{{ patient.document_type or "Pendiente" }} {{ patient.document_number or "Pendiente" }}</td>
+          <td>{{ patient.birth_date or "Pendiente" }}</td>
+          <td>{{ patient.phone or "Pendiente" }}</td>
+          <td>{{ patient.blood_type or "Pendiente" }}</td>
+          <td><button class="copy-id" type="button" data-copy="{{ patient.internal_id }}" aria-label="Copiar código interno completo {{ patient.internal_id }}" title="Copiar código completo">{{ patient.internal_id[:12] }}…</button></td>
+          <td><span class="status {{ 'status-active' if patient.active else 'status-inactive' }}">{{ "Activo" if patient.active else "Inactivo" }}</span></td>
+          <td class="attention-cell">
+            {% if appointment %}
+              <span class="status attention-{{ appointment.status|lower }}">{{ appointment.status_label }}</span>
+              <small class="attention-date">{{ appointment.start_at.strftime("%d/%m/%Y") }}<br>{{ appointment.start_at.strftime("%H:%M") }} – {{ appointment.end_at.strftime("%H:%M") }}</small>
+            {% else %}<span class="attention-empty">Sin cita asignada</span>{% endif %}
+          </td>
+          <td><a class="button button-secondary" href="{{ url_for('patients.edit_patient', internal_id=patient.internal_id) }}">Editar</a>
+          <form method="post" action="{{ url_for('patients.change_status', internal_id=patient.internal_id) }}" {% if patient.active %}onsubmit="return confirm('La desactivación conserva el historial del paciente. ¿Continuar?');"{% endif %}>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="estado" value="{{ selected_filter }}">
+            <input type="hidden" name="activo" value="{{ 'false' if patient.active else 'true' }}">
+            <button class="button button-secondary" type="submit">{{ "Desactivar" if patient.active else "Reactivar" }}</button>
+          </form></td>
+        </tr>{% endfor %}</tbody>
+      </table></div>
+    {% else %}
+      <div class="empty-state"><div class="empty-icon" aria-hidden="true">◎</div><h3>Aún no hay pacientes</h3><p>Usa el botón superior para comenzar.</p></div>
+    {% endif %}
+  </section>
+  <p class="attention-refresh-note">El estado de atención corresponde a la cita indicada. Horario de Bogotá · actualización automática cada 30 segundos.</p>
+  <script src="{{ url_for('static', filename='js/appointment_status.js') }}" defer></script>
+{% endblock %}

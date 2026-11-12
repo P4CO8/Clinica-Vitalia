@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Facturación | Clínica Vitalia{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">Módulo financiero</p><h1>Facturación y pagos</h1><p class="section-description">Crea facturas, emítelas y registra pagos sin superar el saldo.</p></div></div>
+<section class="panel billing-panel">
+  <div class="section-heading"><div><h2>Nueva factura</h2><p class="module-description">La factura se crea como borrador hasta que se emita.</p></div></div>
+  <form class="billing-form" method="post" action="{{ url_for('billing.create_invoice') }}">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <label>Paciente<select name="patient_id" required><option value="">Selecciona un paciente</option>{% for patient in patients %}<option value="{{ patient.paciente_id }}">{{ patient.apellidos }}, {{ patient.nombres }}</option>{% endfor %}</select></label>
+    <label>Servicio<select name="service_id" required><option value="">Selecciona un servicio</option>{% for service in services %}<option value="{{ service.servicio_id }}">{{ service.nombre }} — ${{ service.tarifa }}</option>{% endfor %}</select></label>
+    <label>Cantidad<input name="quantity" type="number" min="1" step="1" value="1" required></label>
+    <button class="button button-primary" type="submit">Crear borrador</button>
+  </form>
+</section>
+<section class="panel billing-panel"><div class="section-heading"><div><h2>Facturas</h2><p class="module-description">Emite una factura antes de registrar pagos.</p></div></div>
+{% for invoice in invoices %}
+<article class="invoice-card"><div><strong>{{ invoice.paciente }}</strong><small>{{ invoice.factura_id }} · {{ invoice.fecha_emision.strftime("%d/%m/%Y %H:%M") }}</small></div><span class="status {{ 'status-active' if invoice.estado == 'EMITIDA' else 'attention-pendiente' }}">{{ invoice.estado|title }}</span><div class="invoice-values"><span>Total: <b>${{ invoice.total }}</b></span><span>Saldo: <b>${{ invoice.saldo }}</b></span></div>{% if invoice.estado == "BORRADOR" %}<form method="post" action="{{ url_for('billing.issue_invoice', invoice_id=invoice.factura_id) }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><button class="button button-secondary" type="submit">Emitir factura</button></form>{% else %}<form class="payment-form" method="post" action="{{ url_for('billing.register_payment', invoice_id=invoice.factura_id) }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="solicitud_id" value="{{ session.get('billing_request_ids', {}).get(invoice.factura_id|string, '') }}"><input name="amount" type="number" min="0.01" step="0.01" placeholder="Monto" required><select name="method" required><option value="EFECTIVO">Efectivo</option><option value="TRANSFERENCIA">Transferencia</option><option value="TARJETA">Tarjeta</option></select><input name="reference" maxlength="100" placeholder="Referencia opcional"><button class="button button-primary" type="submit">Registrar pago</button></form>{% endif %}</article>
+{% else %}<div class="empty-state"><h3>No hay facturas</h3><p>Crea el primer borrador para comenzar.</p></div>{% endfor %}</section>
+{% endblock %}

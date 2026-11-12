@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Administración | Clínica Vitalia{% endblock %}
+{% block content %}
+<div class="page-heading"><div><h1>Administración</h1><p class="section-description">Gestiona usuarios, médicos y especialidades.</p></div></div>
+<nav class="admin-modules" aria-label="Módulos de administración">
+  <a href="#usuarios">Usuarios</a><a href="#medicos">Médicos</a><a href="#especialidades">Especialidades</a>
+</nav>
+<section class="panel admin-module" id="usuarios">
+  <div class="section-heading"><div><p class="eyebrow">Acceso al sistema</p><h2>Usuarios</h2><p class="module-description">Crea cuentas y controla quién puede entrar.</p></div></div>
+  <form class="admin-form-grid" method="post" action="{{ url_for('admin.create_user') }}">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <fieldset class="admin-fieldset"><legend>1. Datos personales y de identificación</legend>
+      <label>Nombres<input name="first_names" required maxlength="100"></label>
+      <label>Apellidos<input name="last_names" required maxlength="100"></label>
+      <label>Tipo de documento<select name="document_type" required><option value="CC">Cédula</option><option value="TI">Tarjeta de identidad</option><option value="CE">Cédula de extranjería</option><option value="PAS">Pasaporte</option></select></label>
+      <label>Número de documento<input name="document_number" required maxlength="20"></label>
+      <label>Teléfono<input name="phone" maxlength="15"></label>
+    </fieldset>
+    <fieldset class="admin-fieldset"><legend>2. Formación académica e idoneidad en salud</legend><label>Formación, títulos y registros<textarea name="training" maxlength="500" required></textarea></label></fieldset>
+    <fieldset class="admin-fieldset"><legend>3. Seguridad social, salud ocupacional y bioseguridad</legend><label>Seguridad social y salud ocupacional<textarea name="occupational" maxlength="500" required></textarea></label><label>Bioseguridad<textarea name="biosecurity" maxlength="500" required></textarea></label></fieldset>
+    <fieldset class="admin-fieldset"><legend>4. Antecedentes, datos financieros y tributarios</legend><label>Información y soportes verificados<textarea name="backgrounds" maxlength="500" required></textarea></label><label>Datos financieros y tributarios<textarea name="financial" maxlength="500" required></textarea></label></fieldset>
+    <label>Usuario<input name="username" required maxlength="50" autocomplete="username"></label>
+    <label>Contraseña<input name="password" type="password" required autocomplete="new-password"><small>Debe incluir una mayúscula y un carácter especial.</small></label>
+    <label>Rol<select name="role_id" required>{% for role in roles|default([]) %}<option value="{{ role.rol_id }}">{{ role.nombre|title }}</option>{% endfor %}</select></label>
+    <div class="admin-form-action"><button class="button button-primary" type="submit">Crear usuario</button></div>
+  </form>
+  <div class="table-wrap"><table><thead><tr><th>Usuario</th><th>Rol</th><th>Estado</th><th>Acción</th></tr></thead><tbody>{% for user in users %}<tr><td>{{ user.nombre_usuario }}</td><td>{{ user.rol|title }}</td><td><span class="status {{ 'status-active' if user.activo else 'status-inactive' }}">{{ "Activo" if user.activo else "Inactivo" }}</span></td><td><form method="post" action="{{ url_for('admin.user_status', user_id=user.usuario_id) }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="activo" value="{{ 'false' if user.activo else 'true' }}"><button class="button button-secondary" type="submit">{{ "Desactivar" if user.activo else "Activar" }}</button></form></td></tr>{% else %}<tr><td colspan="4" class="empty-row">No hay usuarios registrados.</td></tr>{% endfor %}</tbody></table></div>
+</section>
+<section class="panel admin-module" id="medicos">
+  <div class="section-heading"><div><p class="eyebrow">Personal clínico</p><h2>Médicos</h2><p class="module-description">Registra profesionales y vincúlalos a una cuenta médica.</p></div></div>
+  <form class="admin-form-grid" method="post" action="{{ url_for('admin.create_doctor') }}">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <label>Nombre completo<input name="name" maxlength="200" required></label>
+    <label>Registro profesional<input name="professional_id" maxlength="40" required></label>
+    <label>Usuario médico<select name="user_id" required><option value="">Selecciona un usuario MEDICO</option>{% for user in doctor_users %}<option value="{{ user.usuario_id }}">{{ user.nombre_usuario }}</option>{% endfor %}</select></label>
+    <label>Especialidades<select name="specialty_ids" multiple size="4">{% for category, category_specialties in specialties|groupby("categoria") %}<optgroup label="{{ category }}">{% for specialty in category_specialties %}<option value="{{ specialty.especialidad_id }}">{{ specialty.nombre }}</option>{% endfor %}</optgroup>{% endfor %}</select><small>Puedes seleccionar varias con Ctrl o Cmd.</small></label>
+    <div class="admin-form-action"><button class="button button-primary" type="submit">Registrar médico</button></div>
+  </form>
+  <div class="table-wrap"><table><thead><tr><th>Nombre</th><th>Registro</th><th>Especialidades</th><th>Estado</th><th>Acción</th></tr></thead><tbody>{% for doctor in doctors %}<tr><td>{{ doctor.nombre }}</td><td>{{ doctor.registro_profesional }}</td><td>{{ doctor.especialidades or "Sin especialidad" }}</td><td><span class="status {{ 'status-active' if doctor.activo else 'status-inactive' }}">{{ "Activo" if doctor.activo else "Inactivo" }}</span></td><td><form method="post" action="{{ url_for('admin.doctor_status', doctor_id=doctor.medico_id) }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="activo" value="{{ 'false' if doctor.activo else 'true' }}"><button class="button button-secondary" type="submit">{{ "Desactivar" if doctor.activo else "Activar" }}</button></form></td></tr>{% else %}<tr><td colspan="5" class="empty-row">No hay médicos registrados.</td></tr>{% endfor %}</tbody></table></div>
+</section>
+<section class="panel admin-module" id="especialidades">
+  <div class="section-heading"><div><p class="eyebrow">Catálogo clínico</p><h2>Especialidades</h2><p class="module-description">Organiza el catálogo por el tipo de atención médica.</p></div></div>
+  <form class="admin-form-grid specialty-form" method="post" action="{{ url_for('admin.create_specialty') }}">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <label>Nombre de la especialidad<input name="name" maxlength="100" required placeholder="Ej. Cardiología"></label>
+    <label>Grupo<select name="category" required>{% for category in specialty_categories %}<option value="{{ category }}">{{ category }}</option>{% endfor %}</select></label>
+    <div class="admin-form-action"><button class="button button-primary" type="submit">Agregar especialidad</button></div>
+  </form>
+  <div class="specialty-groups">{% for category, category_specialties in specialties|groupby("categoria") %}<div class="specialty-group"><h3>{{ category }}</h3><ul>{% for specialty in category_specialties %}<li>{{ specialty.nombre }}</li>{% endfor %}</ul></div>{% else %}<p class="empty-row">No hay especialidades registradas.</p>{% endfor %}</div>
+</section>
+{% endblock %}

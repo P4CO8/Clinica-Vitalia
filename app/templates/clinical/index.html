@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Atención clínica | Clínica Vitalia{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">Módulo clínico</p><h1>Atención clínica</h1><p class="section-description">Registra la atención, el diagnóstico y el tratamiento de cada cita.</p></div></div>
+<section class="panel clinical-list">
+  <div class="section-heading"><div><h2>Citas disponibles</h2><p class="module-description">Solo aparecen citas programadas o ya atendidas. Las citas de Médico se filtran por su usuario.</p></div></div>
+  {% for appointment in appointments %}
+    <article class="clinical-appointment">
+      <div class="clinical-summary">
+        <div><strong>{{ appointment.nombres }} {{ appointment.apellidos }}</strong><small>{{ appointment.inicio.strftime("%d/%m/%Y %H:%M") }} — {{ appointment.medico }}</small><a class="clinical-history-link" href="{{ url_for('clinical.history', patient_id=appointment.paciente_id) }}">Ver historia clínica</a></div>
+        {% if g.current_user.role == "MEDICO" and not appointment.atencion_id %}<details class="notification-menu"><summary title="Contactar a Recepción" aria-label="Contactar a Recepción">🔔</summary><div class="notification-popover"><strong>Contactar a Recepción</strong><form method="post" action="{{ url_for('messages.send') }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="appointment_id" value="{{ appointment.cita_id }}"><label>Solicitud<select name="message_type"><option value="CANCELAR_CITA">Solicitar cancelación</option><option value="NOTA">Enviar nota</option></select></label><label>Mensaje<textarea name="body" maxlength="2000" required placeholder="Escribe lo que Recepción debe gestionar"></textarea></label><button class="button button-primary" type="submit">Enviar</button></form></div></details>{% endif %}
+        <span class="status {{ 'status-active' if appointment.estado == 'ATENDIDA' else 'attention-pendiente' }}">{{ "Atendida" if appointment.estado == "ATENDIDA" else "Pendiente" }}</span>
+      </div>
+      {% if not appointment.atencion_id %}
+      <form class="clinical-form" method="post" action="{{ url_for('clinical.register_attention', appointment_id=appointment.cita_id) }}">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <label>Motivo de consulta<textarea name="reason" required maxlength="2000"></textarea></label>
+        <label>Diagnóstico<input name="diagnosis" required maxlength="1000"></label>
+        <label>Código diagnóstico <span class="optional">(opcional)</span><input name="diagnosis_code" maxlength="20"></label>
+        <label>Tratamiento<textarea name="treatment" required maxlength="2000"></textarea></label>
+        <label>Medicamento <span class="optional">(opcional)</span><select name="medication_id"><option value="">Sin medicamento</option>{% for medication in medications %}<option value="{{ medication.medicamento_id }}">{{ medication.nombre }} — {{ medication.presentacion }}</option>{% endfor %}</select></label>
+        <label>Dosis<input name="dose" maxlength="100"></label>
+        <label>Frecuencia<input name="frequency" maxlength="100"></label>
+        <label>Duración<input name="duration" maxlength="100"></label>
+        <button class="button button-primary" type="submit">Registrar atención</button>
+      </form>
+      {% else %}<p class="clinical-complete">Esta cita ya tiene una atención clínica registrada.</p>{% endif %}
+    </article>
+  {% else %}<div class="empty-state"><h3>No hay citas para atender</h3><p>Cuando exista una cita asignada, aparecerá aquí.</p></div>{% endfor %}
+</section>
+{% endblock %}

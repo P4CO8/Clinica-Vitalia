@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Inicio | Clínica Vitalia{% endblock %}
+{% block content %}
+  <section class="welcome-card" aria-labelledby="welcome-title">
+    <div class="welcome-copy">
+      <p class="eyebrow">Tu centro de gestión</p>
+      <h1 id="welcome-title">Clínica Vitalia — Sistema de gestión clínica.</h1>
+      <p>Gestiona pacientes y organiza la agenda de citas desde un espacio de trabajo conectado. Selecciona un módulo para comenzar.</p>
+    </div>
+    <div class="hero-orbit" aria-hidden="true"><span>+</span><i></i></div>
+  </section>
+  <div class="module-heading"><p class="eyebrow">Continúa tu jornada</p><h2>Todo empieza aquí</h2></div>
+  <div class="module-grid">
+    <a class="module-card" href="{{ url_for('patients.directory') }}">
+      <span class="module-number">01 / PACIENTES</span><span class="module-icon" aria-hidden="true">◎</span>
+      <h3>Pacientes</h3><p>Consulta el directorio y registra los datos de identificación y contacto.</p>
+      <span class="module-action">Abrir directorio <span aria-hidden="true">↗</span></span>
+    </a>
+    <a class="module-card agenda-card" href="{{ url_for('agenda.index') }}">
+      <span class="module-number">02 / AGENDA</span><span class="module-icon" aria-hidden="true">◷</span>
+      <h3>Agenda de citas</h3><p>Organiza los horarios de atención y consulta las citas programadas.</p>
+      <span class="module-action">Abrir agenda <span aria-hidden="true">↗</span></span>
+    </a>
+  </div>
+{% endblock %}

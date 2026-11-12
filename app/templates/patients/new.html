@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Registrar paciente | Clínica Vitalia — Sistema de gestión clínica{% endblock %}
+{% block content %}
+  <div class="page-heading"><div><p class="eyebrow">Pacientes</p><h1>Registrar paciente</h1><p class="section-description">Completa los datos de identificación y contacto.</p></div></div>
+  <section class="panel form-panel" aria-labelledby="form-title">
+    <h2 id="form-title">Datos del paciente</h2>
+    <form method="post" action="{{ url_for('patients.create_patient') }}" novalidate>
+      <div class="form-grid">
+        {% for field, label in [("first_names", "Nombres"), ("last_names", "Apellidos")] %}
+        <div class="field"><label for="{{ field }}">{{ label }}</label><input id="{{ field }}" name="{{ field }}" type="text" value="{{ form[field] }}" maxlength="100" autocomplete="name" aria-invalid="{{ 'true' if errors.get(field) else 'false' }}" {% if errors.get(field) %}aria-describedby="{{ field }}-error"{% endif %} required>{% if errors.get(field) %}<small id="{{ field }}-error" class="field-error">{{ errors[field] }}</small>{% endif %}</div>
+        {% endfor %}
+        <div class="field"><label for="document_type">Tipo de documento</label><select id="document_type" name="document_type" required><option value="">Selecciona</option>{% for kind in document_types %}<option value="{{ kind }}" {% if form.document_type == kind %}selected{% endif %}>{{ kind }}</option>{% endfor %}</select>{% if errors.document_type %}<small class="field-error">{{ errors.document_type }}</small>{% endif %}</div>
+        <div class="field"><label for="document_number">Número de documento</label><input id="document_number" name="document_number" type="text" inputmode="text" value="{{ form.document_number }}" minlength="3" maxlength="20" pattern="[A-Za-z0-9]{3,20}" required>{% if errors.document_number %}<small class="field-error">{{ errors.document_number }}</small>{% endif %}</div>
+        <div class="field"><label for="birth_date">Fecha de nacimiento</label><input id="birth_date" name="birth_date" type="date" value="{{ form.birth_date }}" max="{{ today }}" required>{% if errors.birth_date %}<small class="field-error">{{ errors.birth_date }}</small>{% endif %}</div>
+        <div class="field"><label for="phone">Teléfono <span class="optional">(opcional)</span></label><input id="phone" name="phone" type="text" inputmode="numeric" value="{{ form.phone }}" minlength="7" maxlength="15" pattern="[0-9]{7,15}">{% if errors.phone %}<small class="field-error">{{ errors.phone }}</small>{% endif %}</div>
+        <div class="field"><label for="blood_type">Grupo sanguíneo y Rh <span class="optional">(opcional)</span></label><select id="blood_type" name="blood_type"><option value="">Sin registrar</option>{% for kind in ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"] %}<option value="{{ kind }}" {% if form.blood_type == kind %}selected{% endif %}>{{ kind }}</option>{% endfor %}</select>{% if errors.blood_type %}<small class="field-error">{{ errors.blood_type }}</small>{% endif %}</div>
+      </div>
+      <div class="form-actions"><a class="button button-secondary" href="{{ url_for('patients.directory') }}">Cancelar</a><button class="button button-primary" type="submit">Registrar paciente <span aria-hidden="true">→</span></button></div>
+    </form>
+  </section>
+{% endblock %}

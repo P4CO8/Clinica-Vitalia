@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}{{ error_title }} | Clínica Vitalia{% endblock %}
+{% block content %}
+<section class="panel error-panel">
+  <span class="section-symbol" aria-hidden="true">↗</span>
+  <p class="eyebrow">Clínica Vitalia</p><h1>{{ error_title }}</h1><p>{{ error_message }}</p>
+  <a class="button button-primary" href="{{ url_for('auth.login') }}">Volver al acceso <span aria-hidden="true">→</span></a>
+</section>
+{% endblock %}

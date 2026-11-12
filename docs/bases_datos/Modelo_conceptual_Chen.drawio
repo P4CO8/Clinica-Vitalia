@@ -1,0 +1,290 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram name="Modelo conceptual Chen" id="vitalia-model">
+    <mxGraphModel dx="2000" dy="2000" grid="1" gridSize="10" page="0" pageScale="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="medicamentos" value="medicamentos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3746.5568" y="587.3312" width="114.66239999999999" height="48.0" />
+        </mxCell>
+        <mxCell id="tratamientos" value="tratamientos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3107.9072" y="688.6688" width="101.33760000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="citas" value="citas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1822.736" y="759.3344" width="72.0" height="48.0" />
+        </mxCell>
+        <mxCell id="medicos" value="medicos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1198.8425599999998" y="777.9968" width="74.66688" height="48.0" />
+        </mxCell>
+        <mxCell id="atenciones" value="atenciones" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2490.7788800000003" y="752.6623999999999" width="90.66623999999999" height="48.0" />
+        </mxCell>
+        <mxCell id="pacientes" value="pacientes" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1194.8427199999999" y="290.0" width="82.66656" height="48.0" />
+        </mxCell>
+        <mxCell id="roles" value="roles" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50.0" y="892.66688" width="72.0" height="48.0" />
+        </mxCell>
+        <mxCell id="usuarios" value="usuarios" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="589.3246399999999" y="835.3376000000001" width="76.00032" height="48.0" />
+        </mxCell>
+        <mxCell id="historias_clinicas" value="historias_clinicas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1794.0704" y="354.0032" width="129.3312" height="48.0" />
+        </mxCell>
+        <mxCell id="pagos" value="pagos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2500.112" y="50.0" width="72.0" height="48.0" />
+        </mxCell>
+        <mxCell id="facturas" value="facturas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1822.0692800000002" y="151.33760000000007" width="73.33344" height="48.0" />
+        </mxCell>
+        <mxCell id="servicios" value="servicios" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1820.06912" y="512.6623999999999" width="77.33376000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="especialidades" value="especialidades" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1800.7376000000002" y="936.66656" width="115.9968" height="48.0" />
+        </mxCell>
+        <mxCell id="diagnosticos" value="diagnosticos" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3107.9072" y="789.9968" width="101.33760000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="auditoria_citas" value="auditoria_citas" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2478.7808" y="872.6623999999999" width="114.66239999999999" height="48.0" />
+        </mxCell>
+        <mxCell id="detalle_factura" value="detalle_factura" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2478.1136" y="368.66239999999993" width="115.9968" height="48.0" />
+        </mxCell>
+        <mxCell id="rel0" value="asigna" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="300.57439999999997" y="835.3376000000001" width="108.8544" height="48.0" />
+        </mxCell>
+        <mxCell id="rel1" value="identifica" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="863.2016" y="777.9968" width="133.7952" height="48.0" />
+        </mxCell>
+        <mxCell id="rel2" value="tiene" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1489.7643200000002" y="354.0032" width="90.71136" height="48.0" />
+        </mxCell>
+        <mxCell id="rel3" value="solicita" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1479.5600000000002" y="515.3312" width="111.12" height="48.0" />
+        </mxCell>
+        <mxCell id="rel4" value="atiende" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1476.1568000000002" y="777.9968" width="117.9264" height="48.0" />
+        </mxCell>
+        <mxCell id="rel5" value="ejerce" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1482.9632000000001" y="882.0032" width="104.31360000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="rel6" value="origina" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2138.504" y="759.3344" width="111.12" height="48.0" />
+        </mxCell>
+        <mxCell id="rel7" value="registra" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2790.224" y="789.9968" width="120.19200000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="rel8" value="indica" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2800.4288" y="688.6688" width="99.78240000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="rel9" value="prescribe" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3408.032" y="587.3312" width="138.336" height="48.0" />
+        </mxCell>
+        <mxCell id="rel10" value="recibe" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1482.9632000000001" y="151.33760000000007" width="104.31360000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="rel11" value="incluye" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2137.3712" y="252.66560000000004" width="113.38560000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="rel12" value="corresponde" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2106.752" y="455.33119999999997" width="174.624" height="48.0" />
+        </mxCell>
+        <mxCell id="rel13" value="recibe pagos" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2105.6191999999996" y="50.0" width="176.8896" height="48.0" />
+        </mxCell>
+        <mxCell id="rel14" value="genera" style="shape=rhombus;whiteSpace=wrap;html=1;fillColor=#DBEAFE;strokeColor=#4338CA;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2137.3712" y="860.6623999999999" width="113.38560000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_atenciones" value="atencion_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2738.072" y="587.3312" width="224.49599999999998" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_auditoria_citas" value="evento_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2745.2864" y="891.33344" width="210.0672" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_citas" value="cita_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2101.0591999999997" y="657.9968" width="186.0096" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_detalle_factura" value="detalle_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2745.2864" y="368.66239999999993" width="210.0672" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_diagnosticos" value="diagnostico_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3354.5264" y="789.9968" width="245.3472" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_especialidades" value="especialidad_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2067.3824" y="962.0" width="253.3632" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_facturas" value="factura_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2088.2288" y="151.33760000000007" width="211.67039999999997" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_historias_clinicas" value="historia_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2086.6256" y="354.0032" width="214.8768" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_medicamentos" value="medicamento_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3998.6047999999996" y="587.3312" width="262.9824" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_medicos" value="medico_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1427.6816000000001" y="676.6688" width="214.8768" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_pacientes" value="paciente_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1422.872" y="252.66560000000004" width="224.49599999999998" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_pagos" value="pago_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2751.6992" y="50.0" width="197.2416" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_roles" value="rol_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="266.0048" y="936.66656" width="177.99360000000001" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_servicios" value="servicio_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2085.8239999999996" y="556.6688" width="216.48" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_tratamientos" value="tratamiento_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3354.5264" y="688.6688" width="245.3472" height="48.0" />
+        </mxCell>
+        <mxCell id="attr_usuarios" value="usuario_id (identificador)" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#64748B;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="822.6608" y="879.3344" width="214.8768" height="48.0" />
+        </mxCell>
+        <mxCell id="edge0" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="roles" target="rel0">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel0" target="usuarios">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="0..1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="usuarios" target="rel1">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="0..1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel1" target="medicos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="pacientes" target="rel2">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel2" target="historias_clinicas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="pacientes" target="rel3">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel3" target="citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge8" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="medicos" target="rel4">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge9" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel4" target="citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge10" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="medicos" target="rel5">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge11" value="M" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel5" target="especialidades">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge12" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="citas" target="rel6">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge13" value="0..1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel6" target="atenciones">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge14" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="atenciones" target="rel7">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge15" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel7" target="diagnosticos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge16" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="atenciones" target="rel8">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge17" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel8" target="tratamientos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge18" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="tratamientos" target="rel9">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge19" value="M" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel9" target="medicamentos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge20" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="pacientes" target="rel10">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge21" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel10" target="facturas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge22" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="facturas" target="rel11">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge23" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel11" target="detalle_factura">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge24" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="servicios" target="rel12">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge25" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel12" target="detalle_factura">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge26" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="facturas" target="rel13">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge27" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel13" target="pagos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge28" value="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="citas" target="rel14">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge29" value="N" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="rel14" target="auditoria_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge30" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="atenciones" target="attr_atenciones">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge31" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="auditoria_citas" target="attr_auditoria_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge32" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="citas" target="attr_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge33" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="detalle_factura" target="attr_detalle_factura">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge34" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="diagnosticos" target="attr_diagnosticos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge35" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="especialidades" target="attr_especialidades">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge36" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="facturas" target="attr_facturas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge37" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="historias_clinicas" target="attr_historias_clinicas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge38" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="medicamentos" target="attr_medicamentos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge39" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="medicos" target="attr_medicos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge40" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="pacientes" target="attr_pacientes">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge41" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="pagos" target="attr_pagos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge42" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="roles" target="attr_roles">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge43" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="servicios" target="attr_servicios">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge44" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="tratamientos" target="attr_tratamientos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge45" value="" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#64748B;fontSize=11;" edge="1" parent="1" source="usuarios" target="attr_usuarios">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Clínica Vitalia — Sistema de gestión clínica{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div class="ambient-grid" aria-hidden="true"></div>
+    <header class="site-header">
+      <a class="brand" href="{{ url_for('patients.home') }}" aria-label="Clínica Vitalia, inicio">
+        <span class="brand-mark" aria-hidden="true">+</span>
+        <span>Clínica Vitalia<small class="brand-subtitle">Gestión clínica</small></span>
+      </a>
+      {% if session.get("user") %}
+        <nav class="main-nav" aria-label="Navegación principal">
+          {% if g.current_user and g.current_user.role == 'ADMINISTRADOR' %}
+            <a class="{{ 'active' if active_module == 'administracion' else '' }}" href="{{ url_for('admin.index') }}">Administración</a>
+            <a class="{{ 'active' if active_module == 'clinica' else '' }}" href="{{ url_for('clinical.index') }}">Clínica</a>
+            <a class="{{ 'active' if active_module == 'facturacion' else '' }}" href="{{ url_for('billing.index') }}">Facturación</a>
+          {% elif g.current_user and g.current_user.role == 'MEDICO' %}
+            <a class="{{ 'active' if active_module == 'clinica' else '' }}" href="{{ url_for('clinical.index') }}">Mi consulta</a>
+          {% elif g.current_user and g.current_user.role == 'RECEPCION' %}
+            <a class="{{ 'active' if active_module == 'inicio' else '' }}" href="{{ url_for('patients.home') }}">Inicio</a>
+            <a class="{{ 'active' if active_module == 'pacientes' else '' }}" href="{{ url_for('patients.directory') }}">Pacientes</a>
+            <a class="{{ 'active' if active_module == 'agenda' else '' }}" href="{{ url_for('agenda.index') }}">Agenda</a>
+          {% elif g.current_user and g.current_user.role == 'FACTURACION' %}
+            <a class="{{ 'active' if active_module == 'facturacion' else '' }}" href="{{ url_for('billing.index') }}">Facturación</a>
+          {% endif %}
+          <form method="post" action="{{ url_for('auth.logout') }}"><input type="hidden" name="_csrf_token" value="{{ csrf_token() }}"><button class="logout-button" type="submit">Cerrar sesión</button></form>
+        </nav>
+        {% if request.endpoint != "auth.login" %}<p class="welcome-user" aria-label="Usuario autenticado">Bienvenido, {{ g.current_user.username if g.current_user else session.get("user") }}</p>{% endif %}
+      {% else %}
+        <span class="header-label">Sistema de gestión clínica</span>
+      {% endif %}
+    </header>
+    <main class="page-shell">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flash-list" aria-live="polite">
+            {% for category, message in messages %}
+              <p class="flash flash-{{ category }}">{{ message }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="site-footer"><span class="footer-dot" aria-hidden="true"></span> Clínica Vitalia <span>·</span> Un espacio para organizar cada atención</footer>
+  </body>
+</html>

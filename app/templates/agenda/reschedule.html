@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Reprogramar cita | Clínica Vitalia{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">Agenda de citas</p><h1>Reprogramar cita</h1><p class="section-description">Elige un nuevo horario para esta cita.</p></div></div>
+<section class="panel form-panel">
+  <div class="reschedule-summary"><span class="status attention-pendiente">Pendiente</span><h2>{{ patient.name }}</h2><p>{{ doctor.name }}</p><small>Horario actual: {{ appointment.start_at.strftime('%d/%m/%Y · %H:%M') }} – {{ appointment.end_at.strftime('%H:%M') }}</small></div>
+  <form method="post" action="{{ url_for('agenda.reschedule', appointment_id=appointment.appointment_id) }}" novalidate>
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="revision" value="{{ form.revision }}">
+    <div class="form-grid">
+      {% for field, label, kind in [('date','Nueva fecha','date'),('start_time','Hora de inicio','time'),('end_time','Hora de fin','time')] %}
+      <div class="field"><label for="{{ field }}">{{ label }}</label><input id="{{ field }}" name="{{ field }}" type="{{ kind }}" value="{{ form[field] }}" required {% if errors.get(field) %}aria-invalid="true" aria-describedby="{{ field }}-error"{% endif %}>{% if errors.get(field) %}<small class="field-error" id="{{ field }}-error">{{ errors[field] }}</small>{% endif %}</div>
+      {% endfor %}
+    </div>
+    <div class="form-actions"><a class="button button-secondary" href="{{ url_for('agenda.index') }}">Volver a la agenda</a><button class="button button-primary" type="submit">Confirmar nuevo horario →</button></div>
+  </form>
+</section>
+{% endblock %}

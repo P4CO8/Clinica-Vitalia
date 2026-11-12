@@ -1,0 +1,25 @@
+{% macro controls(appointment, patient_active, return_to='agenda', selected_filter='todos') -%}
+  {% set actions = attention_actions(appointment, attention_now, patient_active) %}
+  {% set normal_values = actions|map(attribute=0)|list %}
+  <details class="attention-controls">
+    <summary>Acciones de la cita</summary>
+    <div class="attention-buttons">
+      {% if appointment.status == 'PENDIENTE' and patient_active %}
+        <a class="button attention-button" href="{{ url_for('agenda.reschedule', appointment_id=appointment.appointment_id) }}">Reprogramar</a>
+      {% endif %}
+      {% set status_actions = (('CERRADA', 'Cerrar atención'),) if appointment.status == 'EN_ATENCION' else (('EN_ATENCION', 'Poner en turno'), ('CANCELADA', 'Cancelar cita')) %}
+      {% for value, label in status_actions %}
+        {% set exceptional = value not in normal_values %}
+        <form method="post" action="{{ url_for('agenda.change_status', appointment_id=appointment.appointment_id) }}" onsubmit="return {{ "confirm('Esta acción es excepcional y cambiará el estado manualmente. ¿Continuar?')" if exceptional else "true" }};">
+          <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="revision" value="{{ appointment.revision }}">
+          <input type="hidden" name="estado_cita" value="{{ value }}">
+          {% if exceptional %}<input type="hidden" name="forzar" value="1">{% endif %}
+          <input type="hidden" name="volver" value="{{ return_to }}">
+          <input type="hidden" name="filtro" value="{{ selected_filter }}">
+          <button class="button attention-button {{ 'attention-cancel' if value == 'CANCELADA' else '' }}" type="submit">{{ label }}</button>
+        </form>
+      {% endfor %}
+    </div>
+  </details>
+{%- endmacro %}

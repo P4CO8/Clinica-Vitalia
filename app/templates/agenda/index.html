@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Agenda de citas | Clínica Vitalia{% endblock %}
+{% block content %}
+  {% from "_appointment_controls.html" import controls with context %}
+  <div class="page-heading">
+    <div><p class="eyebrow">Agenda de citas</p><h1>Agenda de citas</h1><p class="section-description">Organiza las citas de la clínica.</p></div>
+    <a class="button button-primary" href="{{ url_for('agenda.new') }}">Agendar cita <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="agenda-filter">
+    {% if show_history %}
+      <a class="button button-secondary" href="{{ url_for('agenda.index') }}">Ver citas vigentes</a>
+    {% else %}
+      <a class="button button-secondary" href="{{ url_for('agenda.index', historial=1) }}">Ver historial cancelado</a>
+    {% endif %}
+  </div>
+  <section class="panel appointment-live-panel" aria-labelledby="agenda-title">
+    <div class="section-heading"><h2 id="agenda-title">{{ "Historial de citas" if show_history else "Citas vigentes" }}</h2><span class="count-badge">{{ appointments|length }}</span></div>
+    {% if appointments %}
+      <div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Horario</th><th>Paciente</th><th>Médico</th><th>Estado de atención</th><th>Gestión</th></tr></thead><tbody>
+      {% for appointment in appointments %}<tr>
+        <td>{{ appointment.start_at.strftime("%d/%m/%Y") }}</td>
+        <td>{{ appointment.start_at.strftime("%H:%M") }} – {{ appointment.end_at.strftime("%H:%M") }}</td>
+        <td class="patient-name">{{ patients.get(appointment.patient_id).name if patients.get(appointment.patient_id) else "Pendiente" }}<small>{{ appointment.patient_id }}</small>{% if not show_history and (g.current_user.role == "RECEPCION" or g.current_user.role == "ADMINISTRADOR") %}<a class="notification-link" href="{{ url_for('messages.index') }}" title="Ver solicitudes de esta cita" aria-label="Ver solicitudes de esta cita">🔔</a>{% endif %}</td>
+        <td>{{ doctors[appointment.doctor_id].name if appointment.doctor_id in doctors else "Pendiente" }}</td>
+        <td><span class="status attention-{{ appointment.status|lower }}">{{ appointment.status_label }}</span></td>
+        <td>{{ controls(appointment, patients.get(appointment.patient_id).active if patients.get(appointment.patient_id) else false) }}</td>
+      </tr>{% endfor %}
+      </tbody></table></div>
+      <div class="appointment-cards">
+        {% for appointment in appointments %}
+          {% set patient = patients.get(appointment.patient_id) %}
+          <article class="appointment-card">
+            <div class="appointment-card-heading">
+              <strong>{{ patient.name if patient else "Paciente pendiente" }}</strong>
+              <span class="status attention-{{ appointment.status|lower }}">{{ appointment.status_label }}</span>
+            </div>
+            <p>{{ appointment.start_at.strftime("%d/%m/%Y") }} · {{ appointment.start_at.strftime("%H:%M") }} – {{ appointment.end_at.strftime("%H:%M") }}</p>
+            <p>{{ doctors[appointment.doctor_id].name if appointment.doctor_id in doctors else "Médico pendiente" }}</p>
+            {{ controls(appointment, patient.active if patient else false) }}
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state"><div class="empty-icon" aria-hidden="true">◷</div><h3>{{ "No hay citas canceladas" if show_history else "Aún no hay citas vigentes" }}</h3><p>{{ "Las citas canceladas aparecerán aquí." if show_history else "Agrega una cita para comenzar la agenda." }}</p>{% if not show_history %}<a href="{{ url_for('agenda.new') }}">Agendar cita <span aria-hidden="true">→</span></a>{% endif %}</div>
+    {% endif %}
+  </section>
+  <p class="attention-refresh-note">Las citas pendientes se cierran al finalizar su horario. Una atención iniciada requiere cierre manual. Horario de Bogotá · actualización cada 30 segundos.</p>
+  <script src="{{ url_for('static', filename='js/appointment_status.js') }}" defer></script>
+{% endblock %}

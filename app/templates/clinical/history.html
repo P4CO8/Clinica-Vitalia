@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Historia clínica | Clínica Vitalia{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">Historia protegida</p><h1>{{ patient.nombres }} {{ patient.apellidos }}</h1><p class="section-description">{{ patient.tipo_documento }} {{ patient.numero_documento }}</p></div></div>
+<section class="panel">
+  <div class="section-heading"><h2>Atenciones registradas</h2><a class="button button-secondary" href="{{ url_for('clinical.index') }}">Volver a clínica</a></div>
+  {% for record in records %}
+  <article class="history-record"><div><strong>{{ record.fecha_atencion.strftime("%d/%m/%Y %H:%M") }}</strong><small>{{ record.medico }}</small></div><p><b>Motivo:</b> {{ record.motivo_consulta }}</p><p><b>Diagnóstico:</b> {{ record.diagnosticos or "No especificado" }}</p><p><b>Tratamiento:</b> {{ record.tratamientos or "No especificado" }}</p></article>
+  {% else %}<div class="empty-state"><h3>Sin atenciones registradas</h3><p>La historia todavía no tiene registros.</p></div>{% endfor %}
+</section>
+{% endblock %}

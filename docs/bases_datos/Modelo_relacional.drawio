@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" version="24.7.17">
+  <diagram name="Modelo relacional" id="vitalia-model">
+    <mxGraphModel dx="2000" dy="2000" grid="1" gridSize="10" page="0" pageScale="1">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="t_atenciones" value="&lt;b&gt;atenciones&lt;/b&gt;&lt;hr&gt;PK  atencion_id  uuid&lt;br&gt;FK  cita_id  character varying(40)&lt;br&gt;motivo_consulta  text&lt;br&gt;FK  registrado_por  uuid&lt;br&gt;fecha_atencion  timestamp with time zone" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2190.0368" y="811.3231999999999" width="289.3344" height="130.66559999999998" />
+        </mxCell>
+        <mxCell id="t_auditoria_citas" value="&lt;b&gt;auditoria_citas&lt;/b&gt;&lt;hr&gt;PK  evento_id  bigint&lt;br&gt;FK  cita_id  character varying(40)&lt;br&gt;FK  actor_id  uuid&lt;br&gt;accion  character varying(20)&lt;br&gt;fecha  timestamp with time zone&lt;br&gt;estado_anterior  character varying(15)  ?&lt;br&gt;estado_nuevo  character varying(15)&lt;br&gt;inicio_anterior  timestamp with time zone  ?&lt;br&gt;inicio_nuevo  timestamp with time zone&lt;br&gt;fin_anterior  timestamp with time zone  ?&lt;br&gt;fin_nuevo  timestamp with time zone" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2186.0384" y="1153.9856" width="297.33119999999997" height="226.66559999999998" />
+        </mxCell>
+        <mxCell id="t_citas" value="&lt;b&gt;citas&lt;/b&gt;&lt;hr&gt;PK  cita_id  character varying(40)&lt;br&gt;FK  paciente_id  character varying(40)&lt;br&gt;FK  medico_id  character varying(40)&lt;br&gt;inicio  timestamp with time zone&lt;br&gt;fin  timestamp with time zone&lt;br&gt;estado  character varying(15)&lt;br&gt;FK  creado_por  uuid&lt;br&gt;FK  actualizado_por  uuid&lt;br&gt;creado_en  timestamp with time zone&lt;br&gt;cierre_automatico boolean&lt;br&gt;revision integer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1664.6336" y="863.3216" width="266.66880000000003" height="226.6688" />
+        </mxCell>
+        <mxCell id="t_detalle_factura" value="&lt;b&gt;detalle_factura&lt;/b&gt;&lt;hr&gt;PK  detalle_id  bigint&lt;br&gt;FK  factura_id  uuid&lt;br&gt;FK  servicio_id  integer&lt;br&gt;descripcion  character varying(200)&lt;br&gt;cantidad  integer&lt;br&gt;precio_unitario  numeric(12,2)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1674.6367999999998" y="101.94559999999997" width="246.6624" height="146.6688" />
+        </mxCell>
+        <mxCell id="t_diagnosticos" value="&lt;b&gt;diagnosticos&lt;/b&gt;&lt;hr&gt;PK  diagnostico_id  uuid&lt;br&gt;FK  atencion_id  uuid&lt;br&gt;codigo  character varying(20)  ?&lt;br&gt;descripcion  text" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2770.0016" y="763.3260799999999" width="223.9968" height="114.66623999999999" />
+        </mxCell>
+        <mxCell id="t_especialidades" value="&lt;b&gt;especialidades&lt;/b&gt;&lt;hr&gt;PK  especialidad_id  integer&lt;br&gt;nombre  character varying(100)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1101.9968" y="1239.3223999999998" width="222.6624" height="82.66656" />
+        </mxCell>
+        <mxCell id="t_facturas" value="&lt;b&gt;facturas&lt;/b&gt;&lt;hr&gt;PK  factura_id  uuid&lt;br&gt;FK  paciente_id  character varying(40)&lt;br&gt;estado  character varying(10)&lt;br&gt;FK  creado_por  uuid&lt;br&gt;fecha_emision  timestamp with time zone" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1071.3296" y="322.01120000000003" width="283.9968" height="130.66559999999998" />
+        </mxCell>
+        <mxCell id="t_historias_clinicas" value="&lt;b&gt;historias_clinicas&lt;/b&gt;&lt;hr&gt;PK  historia_id  uuid&lt;br&gt;FK  paciente_id  character varying(40)&lt;br&gt;fecha_apertura  timestamp with time zone&lt;br&gt;antecedentes  text" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1068.6608" y="177.94687999999996" width="289.3344" height="114.66623999999999" />
+        </mxCell>
+        <mxCell id="t_medicamentos" value="&lt;b&gt;medicamentos&lt;/b&gt;&lt;hr&gt;PK  medicamento_id  integer&lt;br&gt;nombre  character varying(150)&lt;br&gt;presentacion  character varying(100)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2753.9984" y="635.32256" width="256.0032" height="98.66688" />
+        </mxCell>
+        <mxCell id="t_medico_especialidad" value="&lt;b&gt;medico_especialidad&lt;/b&gt;&lt;hr&gt;PK / FK  medico_id  character varying(40)&lt;br&gt;PK / FK  especialidad_id  integer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1652.6336" y="1151.32592" width="290.66880000000003" height="82.66656" />
+        </mxCell>
+        <mxCell id="t_medicos" value="&lt;b&gt;medicos&lt;/b&gt;&lt;hr&gt;PK  medico_id  character varying(40)&lt;br&gt;nombre  character varying(200)&lt;br&gt;registro_profesional  character varying(40)&lt;br&gt;FK  usuario_id  uuid  ?&lt;br&gt;activo  boolean" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1067.3264" y="1079.3264000000001" width="292.0032" height="130.66559999999998" />
+        </mxCell>
+        <mxCell id="t_pacientes" value="&lt;b&gt;pacientes&lt;/b&gt;&lt;hr&gt;PK  paciente_id  character varying(40)&lt;br&gt;nombres  character varying(100)&lt;br&gt;apellidos  character varying(100)&lt;br&gt;tipo_documento  character varying(3)&lt;br&gt;numero_documento  character varying(20)&lt;br&gt;fecha_nacimiento  date&lt;br&gt;telefono  character varying(15)&lt;br&gt;grupo_sanguineo  character varying(3)&lt;br&gt;creado_en  timestamp with time zone" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="502.0064000000001" y="290.00960000000003" width="294.6624" height="194.6688" />
+        </mxCell>
+        <mxCell id="t_pagos" value="&lt;b&gt;pagos&lt;/b&gt;&lt;hr&gt;PK  pago_id  uuid&lt;br&gt;FK  factura_id  uuid&lt;br&gt;monto  numeric(12,2)&lt;br&gt;medio  character varying(20)&lt;br&gt;referencia  character varying(100)&lt;br&gt;FK  registrado_por  uuid&lt;br&gt;fecha_pago  timestamp with time zone&lt;br&gt;solicitud_id  uuid" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1664.6336" y="413.98879999999997" width="266.66880000000003" height="178.66559999999998" />
+        </mxCell>
+        <mxCell id="t_roles" value="&lt;b&gt;roles&lt;/b&gt;&lt;hr&gt;PK  rol_id  smallint&lt;br&gt;nombre  character varying(30)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50.00480000000002" y="823.3227199999999" width="214.66559999999998" height="82.66656" />
+        </mxCell>
+        <mxCell id="t_servicios" value="&lt;b&gt;servicios&lt;/b&gt;&lt;hr&gt;PK  servicio_id  integer&lt;br&gt;nombre  character varying(150)&lt;br&gt;tarifa  numeric(12,2)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1101.9968" y="50.01056000000005" width="222.6624" height="98.66688" />
+        </mxCell>
+        <mxCell id="t_tratamiento_medicamento" value="&lt;b&gt;tratamiento_medicamento&lt;/b&gt;&lt;hr&gt;PK / FK  tratamiento_id  uuid&lt;br&gt;PK / FK  medicamento_id  integer&lt;br&gt;dosis  character varying(100)&lt;br&gt;frecuencia  character varying(100)&lt;br&gt;duracion  character varying(100)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="3307.3759999999997" y="709.9855999999999" width="240.0" height="130.66559999999998" />
+        </mxCell>
+        <mxCell id="t_tratamientos" value="&lt;b&gt;tratamientos&lt;/b&gt;&lt;hr&gt;PK  tratamiento_id  uuid&lt;br&gt;FK  atencion_id  uuid&lt;br&gt;descripcion  text&lt;br&gt;fecha_inicio  date&lt;br&gt;fecha_fin  date  ?" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="2794.0016" y="907.3231999999999" width="175.9968" height="130.66559999999998" />
+        </mxCell>
+        <mxCell id="t_usuarios" value="&lt;b&gt;usuarios&lt;/b&gt;&lt;hr&gt;PK  usuario_id  uuid&lt;br&gt;nombre_usuario  character varying(50)&lt;br&gt;password_hash  text&lt;br&gt;FK  rol_id  smallint&lt;br&gt;activo  boolean&lt;br&gt;creado_en  timestamp with time zone" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F1F5F9;strokeColor=#0F766E;fontSize=12;align=left;spacing=8;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="514.0064000000001" y="791.3216" width="270.6624" height="146.6688" />
+        </mxCell>
+        <mxCell id="edge0" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERone;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_citas" target="t_atenciones">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge1" value="1 : 0..N FK (registrado_por) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_atenciones">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge2" value="1 : 0..N FK (actor_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_auditoria_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="1 : 0..N FK (cita_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_citas" target="t_auditoria_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="1 : 0..N FK (actualizado_por) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="1 : 0..N FK (creado_por) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="1 : 0..N FK (medico_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_medicos" target="t_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="1 : 0..N FK (paciente_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_pacientes" target="t_citas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge8" value="1 : 0..N FK (factura_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_facturas" target="t_detalle_factura">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge9" value="1 : 0..N FK (servicio_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_servicios" target="t_detalle_factura">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge10" value="1 : 0..N FK (atencion_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_atenciones" target="t_diagnosticos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge11" value="1 : 0..N FK (creado_por) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_facturas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge12" value="1 : 0..N FK (paciente_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_pacientes" target="t_facturas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge13" value="1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERone;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_pacientes" target="t_historias_clinicas">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge14" value="1 : 0..N FK (especialidad_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_especialidades" target="t_medico_especialidad">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge15" value="1 : 0..N FK (medico_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_medicos" target="t_medico_especialidad">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge16" value="0..1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERone;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_medicos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge17" value="1 : 0..N FK (factura_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_facturas" target="t_pagos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge18" value="1 : 0..N FK (registrado_por) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_usuarios" target="t_pagos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge19" value="1 : 0..N FK (medicamento_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_medicamentos" target="t_tratamiento_medicamento">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge20" value="1 : 0..N FK (tratamiento_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_tratamientos" target="t_tratamiento_medicamento">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge21" value="1 : 0..N FK (atencion_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_atenciones" target="t_tratamientos">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge22" value="1 : 0..N FK (rol_id) " style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#64748B;endArrow=ERmany;startArrow=ERone;fontSize=11;" edge="1" parent="1" source="t_roles" target="t_usuarios">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

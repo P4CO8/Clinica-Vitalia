@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Agendar cita | Clínica Vitalia{% endblock %}
+{% block content %}
+  <div class="page-heading"><div><p class="eyebrow">Agenda de citas</p><h1>Agendar cita</h1><p class="section-description">Selecciona un paciente, un médico y un horario.</p></div></div>
+  {% if not patients %}
+    <section class="panel empty-state"><h2>Primero registra un paciente</h2><p>La cita necesita un paciente existente.</p><a class="button button-primary" href="{{ url_for('patients.new_patient') }}">Registrar paciente</a></section>
+  {% else %}
+    <section class="panel form-panel" aria-labelledby="appointment-form-title">
+      <h2 id="appointment-form-title">Datos de la cita</h2>
+      <form method="post" action="{{ url_for('agenda.create') }}" novalidate>
+        <input type="hidden" name="appointment_id" value="{{ form.appointment_id }}">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <div class="form-grid">
+          <div class="field"><label for="patient_id">Paciente</label><select id="patient_id" name="patient_id" required><option value="">Selecciona un paciente</option>{% for patient in patients %}<option value="{{ patient.internal_id }}" {% if form.patient_id == patient.internal_id %}selected{% endif %}>{{ patient.name }} · {{ patient.internal_id }}</option>{% endfor %}</select>{% if errors.patient_id %}<small class="field-error">{{ errors.patient_id }}</small>{% endif %}</div>
+          <div class="field"><label for="doctor_id">Médico</label><select id="doctor_id" name="doctor_id" required><option value="">Selecciona un médico</option>{% for doctor in doctors %}<option value="{{ doctor.doctor_id }}" {% if form.doctor_id == doctor.doctor_id %}selected{% endif %}>{{ doctor.name }}</option>{% endfor %}</select>{% if errors.doctor_id %}<small class="field-error">{{ errors.doctor_id }}</small>{% endif %}</div>
+          <div class="field"><label for="date">Fecha</label><input id="date" name="date" type="date" value="{{ form.date }}" required>{% if errors.date %}<small class="field-error">{{ errors.date }}</small>{% endif %}</div>
+          <div class="field"><label for="start_time">Hora de inicio</label><input id="start_time" name="start_time" type="time" value="{{ form.start_time }}" required>{% if errors.start_time %}<small class="field-error">{{ errors.start_time }}</small>{% endif %}</div>
+          <div class="field"><label for="end_time">Hora de fin</label><input id="end_time" name="end_time" type="time" value="{{ form.end_time }}" required>{% if errors.end_time %}<small class="field-error">{{ errors.end_time }}</small>{% endif %}</div>
+        </div>
+        <div class="form-actions"><a class="button button-secondary" href="{{ url_for('agenda.index') }}">Volver a la agenda</a><button class="button button-primary" type="submit">Agendar cita <span aria-hidden="true">→</span></button></div>
+      </form>
+    </section>
+  {% endif %}
+{% endblock %}
